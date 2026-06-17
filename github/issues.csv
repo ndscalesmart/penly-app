@@ -1,0 +1,26 @@
+ticket,title,epic,priority,points,sprint,milestone
+PENLY-001,User Registration,Auth,P0,3,1,Sprint 1 — Foundation & Auth
+PENLY-002,Google OAuth Login,Auth,P0,2,1,Sprint 1 — Foundation & Auth
+PENLY-003,Author Onboarding Wizard,Auth,P0,5,1,Sprint 1 — Foundation & Auth
+PENLY-070,Waitlist Email Capture,Waitlist,P0,2,1,Sprint 1 — Foundation & Auth
+PENLY-010,Create New Book,Editor,P0,3,2,Sprint 2 — Book Editor Core
+PENLY-011,Rich Text Manuscript Editor,Editor,P0,8,2,Sprint 2 — Book Editor Core
+PENLY-012,Book Metadata Editor,Editor,P0,3,2,Sprint 2 — Book Editor Core
+PENLY-013,AI Drafting Assistant,Editor,P0,13,3,Sprint 3 — AI Drafting & Publishing
+PENLY-014,Export Book (PDF + ePub),Editor,P0,8,3,Sprint 3 — AI Drafting & Publishing
+PENLY-015,Publish Book,Editor,P0,3,3,Sprint 3 — AI Drafting & Publishing
+PENLY-020,Marketplace Browse Page,Marketplace,P0,5,4,Sprint 4 — Marketplace & Payments
+PENLY-021,Book Search,Marketplace,P0,3,4,Sprint 4 — Marketplace & Payments
+PENLY-022,Book Detail Page,Marketplace,P0,5,4,Sprint 4 — Marketplace & Payments
+PENLY-030,Book Purchase Flow (Stripe),Payments,P0,8,4,Sprint 4 — Marketplace & Payments
+PENLY-031,Stripe Connect Onboarding,Payments,P0,5,5,Sprint 5 — Payouts Dashboard & Beta
+PENLY-032,Buyer Download Library,Payments,P0,3,5,Sprint 5 — Payouts Dashboard & Beta
+PENLY-040,Dashboard Overview,Dashboard,P0,5,5,Sprint 5 — Payouts Dashboard & Beta
+PENLY-023,Write a Review,Marketplace,P1,3,5,Sprint 5 — Payouts Dashboard & Beta
+PENLY-033,Discount Code Creation,Payments,P1,3,5,Sprint 5 — Payouts Dashboard & Beta
+PENLY-041,Per-Book Analytics,Dashboard,P1,5,6,Sprint 6 — Marketing & Profiles
+PENLY-004,User Profile Settings,Auth,P1,3,6,Sprint 6 — Marketing & Profiles
+PENLY-050,Launch Page Builder,Marketing,P1,8,6,Sprint 6 — Marketing & Profiles
+PENLY-060,Public Author Profile Page,Profile,P1,5,6,Sprint 6 — Marketing & Profiles
+PENLY-051,Email Capture Widget,Marketing,P1,3,8,Sprint 8 — Growth Features (v1.1)
+PENLY-080,Admin Dashboard,Admin,P2,8,8,Sprint 8 — Growth Features (v1.1)

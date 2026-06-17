@@ -1,0 +1,19 @@
+# OS
+.DS_Store
+*.log
+
+# Node (web/ has its own .gitignore, but cover the repo broadly too)
+node_modules/
+.next/
+out/
+build/
+
+# Env / secrets — never commit
+.env
+.env*.local
+
+# Vercel
+.vercel
+
+# Editor
+*.tsbuildinfo
