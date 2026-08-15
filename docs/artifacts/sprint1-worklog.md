@@ -72,6 +72,25 @@ This log records work completed, mapped to backlog tickets where applicable. Col
 
 ---
 
+## Phase 5 — Standards Reconciliation & Test Harness · 2026-08-15
+
+| Task / Objective | Feature / Resource | Approach |
+|---|---|---|
+| Fix a broken standards reference | [.architecture/DEVELOPMENT_STANDARDS.md](../../.architecture/DEVELOPMENT_STANDARDS.md) | `standard-practice.md` pointed at a file that did not exist. Authored it: working agreement (consent + no-guessing), stack, TS/React conventions, DB & RLS rules, secrets, git, testing, a11y, Definition of Done, deploy and debug procedure. Fixed the link path and the mis-numbered pre-deployment list. |
+| Settle the branch strategy | `standard-practice.md` · DEVELOPMENT_STANDARDS §4 | Two docs conflicted: `dev → qa → uat → main` vs `feature/* → staging → main`. **Decision: `feature/* → staging → main`** — only one Supabase project exists, and four tiers buy nothing before real money is in the system. Revisit before Stripe (Sprint 4). |
+| Make the test rule enforceable | Vitest + Testing Library + Playwright | No test framework existed, so "every new or changed function must have unit tests" was unenforceable. Added `vitest.config.mts` (jsdom, `@/` alias, v8 coverage) + `vitest.setup.ts`. JSX needed an explicit `oxc.jsx.runtime = "automatic"` — tsconfig's `jsx: "preserve"` leaves JSX untransformed for the runner. |
+| Avoid shipping a known-vulnerable runner | `npm audit` | The first install pulled vitest 2.x (**critical** advisory) and a vite-5 chain via `@vitejs/plugin-react` + `vite-tsconfig-paths` (**high**). Moved to vitest 4.1.10 and dropped both packages — the alias is 3 lines of config, and the React plugin only provides Fast Refresh, which tests don't use. Both advisories cleared. |
+| Cover the existing Sprint 1 logic | 30 unit/component tests | `api/waitlist/route.test.ts` (12) — validation, normalization, dupe-as-`23505`, error paths, and that email only sends on real inserts. `auth-form.test.tsx` (11) — password rule, OAuth redirect, error surfacing, login/signup differences, labelling. `auth.test.ts` (7) — `requireAdmin` gate, including that it **fails closed** on a missing row or RLS error. |
+| Cover the flows end-to-end | `e2e/smoke.spec.ts` — 11 Playwright tests | Runs a production build on port 3100 with **placeholder** Supabase creds, so CI needs no secrets and creates no data: rendering, navigation, client-side validation, input labelling, and middleware protection of `/dashboard`, `/books`, `/library`, `/admin`. Live-credential flows are documented as guarded/skipped in [e2e/README.md](../../web/e2e/README.md). |
+| One entry point, wired to CI | [scripts/run_tests.sh](../../scripts/run_tests.sh) · `ci.yml` | `run_tests.sh` runs typecheck → unit → e2e (`--unit` / `--e2e` to narrow); this is the path `standard-practice.md` already referenced. CI now also runs unit + e2e, triggers on `staging`, and uploads the Playwright report on failure. |
+| Verify | `./scripts/run_tests.sh` | **Green — typecheck clean, 30 unit passed, 11 e2e passed.** |
+
+**Flagged, not actioned (needs a decision):**
+- Pre-existing **high** advisories in `next@15.1.4`, `postcss`, `sharp` — a Next upgrade is a separate call.
+- `next build` warns it inferred the workspace root as `/Users/nducasse` because a stray `package-lock.json` sits in the home directory. Fixable via `outputFileTracingRoot` in `next.config.mjs`, or by removing that file.
+
+---
+
 ## Sprint 1 ticket status
 
 | Ticket | Story | Status |
